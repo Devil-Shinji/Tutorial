@@ -7,30 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-#  PYTHON:
-#    runs-on: ubuntu-latest
-#    strategy:
-#      matrix:
-#        python-version: [3.8]
-#
-#    steps:
-#      - name: Build
-#        uses: actions/checkout@v2
-#
-#      - name: Setup Python
-#        uses: actions/setup-python@v2
-#        with:
-#          python-version: ${{matrix.python-version}}
-#
-#      - name: Install Python Requirements
-#        run: |
-#          pip install --upgrade pip
-#          pip install -r Python/requirements.txt
-#
-#      - name: Test Python
-#        run: |
-#          pip install prospector pylint
-#          prospector Python/
   DOTNET:
     runs-on: ubuntu-latest
     strategy:
@@ -48,10 +24,10 @@ jobs:
 
       - name: Install .NET Dependencies
         run: |
-          dotnet restore CSharp/Ledger.sln
+          dotnet restore letusbuild2021/letusbuild2021.sln
 
       - name: Build .NET
-        run: dotnet build CSharp/ --configuration ${{secrets.DOTNET_CONFIG}} --no-restore
+        run: dotnet build letusbuild2021/ --configuration ${{secrets.DOTNET_CONFIG}} --no-restore
 
       - name: .NET Unit Testing
-        run: dotnet test CSharp/
+        run: dotnet test letusbuild2021/

@@ -27,6 +27,17 @@
 - Business Use Case
   - "As an event organizer I want to have possibility to 
     see contact information for people who apply to event"
-  - ""
+  - Use case was chosen because:
+    - Common in many business scenarios
+    - Broad topic to expand feature list
+- No formal certification, however can later apply for **Azure certification**!
+- Git tutorial
+  - Basic operations
+    - Init
+  - Create a repository
+  - Fork, Push, Fetch, Pull
+  - local and remote repository flow
+  - etc
+  - [More material](https://learngitbranching.js.org/)
 
 ---
