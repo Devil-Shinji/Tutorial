@@ -1,0 +1,57 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [Devil-Root]
+
+  workflow_dispatch:
+
+jobs:
+#  PYTHON:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        python-version: [3.8]
+#
+#    steps:
+#      - name: Build
+#        uses: actions/checkout@v2
+#
+#      - name: Setup Python
+#        uses: actions/setup-python@v2
+#        with:
+#          python-version: ${{matrix.python-version}}
+#
+#      - name: Install Python Requirements
+#        run: |
+#          pip install --upgrade pip
+#          pip install -r Python/requirements.txt
+#
+#      - name: Test Python
+#        run: |
+#          pip install prospector pylint
+#          prospector Python/
+  DOTNET:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: [5.0.x]
+
+    steps:
+      - name: Build
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with: 
+          dotnet-version: ${{matrix.dotnet-version}}
+
+      - name: Install .NET Dependencies
+        run: |
+          dotnet restore CSharp/Ledger.sln
+
+      - name: Build .NET
+        run: dotnet build CSharp/ --configuration ${{secrets.DOTNET_CONFIG}} --no-restore
+
+      - name: .NET Unit Testing
+        run: dotnet test CSharp/
