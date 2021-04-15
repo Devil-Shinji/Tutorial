@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{4174A567-62D2-4C95-8263-E320594D9E05}"
 ProjectSection(SolutionItems) = preProject
-	Notes.md = Notes.md
+	Documents\Notes.md = Documents\Notes.md
 EndProjectSection
 EndProject
 Global
