@@ -1,0 +1,33 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [Devil-Root]
+
+  workflow_dispatch:
+
+jobs:
+  DOTNET:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: [5.0.x]
+
+    steps:
+      - name: Build
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with: 
+          dotnet-version: ${{matrix.dotnet-version}}
+
+      - name: Install .NET Dependencies
+        run: |
+          dotnet restore letusbuild2021/letusbuild2021.sln
+
+      - name: Build .NET
+        run: dotnet build letusbuild2021/ --configuration ${{secrets.DOTNET_CONFIG}} --no-restore
+
+      - name: .NET Unit Testing
+        run: dotnet test letusbuild2021/

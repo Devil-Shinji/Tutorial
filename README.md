@@ -8,8 +8,8 @@ Repository for all tutorials
 
 ## Commit Message
 
-- Default commit message is: [Info] [Programming Language]
-- Issue related commit message is: [Info] [Issue] [Programming Language]
+- Default commit message is: [Info]
+- Issue related commit message is: [Info] [Issue]
 
 ---
 
